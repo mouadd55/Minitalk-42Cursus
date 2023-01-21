@@ -6,21 +6,49 @@
 /*   By: moudrib <moudrib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:13:11 by moudrib           #+#    #+#             */
-/*   Updated: 2023/01/19 16:35:33 by moudrib          ###   ########.fr       */
+/*   Updated: 2023/01/20 19:33:50 by moudrib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int main (int ac, char **av)
+void tobinary(char *str, int pid)
 {
-	int	pid;
-	
-	pid = 0;
-	if (ac == 2)
+	int i;
+	int j;
+
+	j = 0;
+	while (str[j])
 	{
-    	pid = ft_atoi(av[1]);
+		i = -1;
+		while (++i < 8)
+		{
+			if (128 >> i & str[j])
+			{
+				kill(pid, SIGUSR1);
+				// write(1, "1", 1);
+			}
+			else
+			{
+				kill(pid, SIGUSR2);
+				// write(1, "0", 1);
+			}
+			// signal();
+			usleep(700);
+		}
+		j++;
 	}
-    kill(pid , SIGINT);
+}
+
+int main(int ac, char **av)
+{
+	int pid;
+
+	pid = 0;
+	if (ac == 3)
+	{
+		pid = ft_atoi(av[1]);
+		tobinary(av[2], pid);
+	}
 	return (0);
 }
