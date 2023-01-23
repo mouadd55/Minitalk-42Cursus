@@ -6,17 +6,17 @@
 /*   By: moudrib <moudrib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:13:26 by moudrib           #+#    #+#             */
-/*   Updated: 2023/01/20 19:36:45 by moudrib          ###   ########.fr       */
+/*   Updated: 2023/01/21 16:21:47 by moudrib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void usr_handler(int sig, siginfo_t *info, void *ptr)
+void	usr_handler(int sig, siginfo_t *info, void *ptr)
 {
-	static char c;
-	static int i;
-	static pid_t pid;
+	static char		c;
+	static int		i;
+	static pid_t	pid;
 
 	(void)ptr;
 	if (pid != info->si_pid)
@@ -30,23 +30,22 @@ void usr_handler(int sig, siginfo_t *info, void *ptr)
 	i++;
 	if (i == 8)
 	{
-		// if(c == 0)
-		// 	kill(pid, SIGUSR2);
+		if (c == 0)
+			kill(pid, SIGUSR2);
 		ft_putchar(c);
 		i = 0;
 		c = 0;
 	}
 }
 
-int main()
+int	main(void)
 {
-	struct sigaction action;
+	pid_t				pid;
+	struct sigaction	action;
+
 	action.sa_flags = SA_SIGINFO;
 	action.sa_sigaction = usr_handler;
-	pid_t pid;
-
 	pid = getpid();
-
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
 	ft_putstr("Process ID: ");

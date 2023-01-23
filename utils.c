@@ -6,7 +6,7 @@
 /*   By: moudrib <moudrib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:26 by moudrib           #+#    #+#             */
-/*   Updated: 2023/01/19 16:31:27 by moudrib          ###   ########.fr       */
+/*   Updated: 2023/01/21 15:12:02 by moudrib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write (1, &c, 1);
 }
@@ -57,12 +57,12 @@ void	ft_putnbr(unsigned int nbr)
 
 void	ft_putstr(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
 		ft_putchar(str[i]);
-		i++;	
+		i++;
 	}
 }
