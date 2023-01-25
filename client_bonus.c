@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moudrib <moudrib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/19 15:13:11 by moudrib           #+#    #+#             */
-/*   Updated: 2023/01/25 00:35:29 by moudrib          ###   ########.fr       */
+/*   Created: 2023/01/23 16:16:13 by moudrib           #+#    #+#             */
+/*   Updated: 2023/01/24 23:28:14 by moudrib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-int	check_format(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (i < ft_strlen(str))
-	{
-		if (!(('0' > str[i]) && '9' > str[i]))
-		{
-			ft_putstr("❌INVALID FORMAT: TRY ./client + pid + \"string\"");
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
 
 void	sighandler(int sig)
 {
@@ -50,7 +33,6 @@ void	tobinary(char c, int pid)
 	}
 }
 
-#include <string.h>
 int	main(int ac, char **av)
 {
 	int	pid;
@@ -60,8 +42,6 @@ int	main(int ac, char **av)
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
-		if (check_format(av[1]))
-			return (0);
 		while (av[2][i])
 		{
 			tobinary(av[2][i], pid);
@@ -69,7 +49,5 @@ int	main(int ac, char **av)
 		}
 		tobinary(0, pid);
 	}
-	else
-		ft_putstr("❌INVALID FORMAT: TRY ./client + pid + \"string\"");
 	return (0);
 }

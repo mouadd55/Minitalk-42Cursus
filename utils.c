@@ -6,7 +6,7 @@
 /*   By: moudrib <moudrib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:09:26 by moudrib           #+#    #+#             */
-/*   Updated: 2023/01/21 15:12:02 by moudrib          ###   ########.fr       */
+/*   Updated: 2023/01/24 23:56:39 by moudrib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,14 @@ void	ft_putstr(char *str)
 		ft_putchar(str[i]);
 		i++;
 	}
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
