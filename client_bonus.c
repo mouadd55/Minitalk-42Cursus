@@ -6,15 +6,33 @@
 /*   By: moudrib <moudrib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:16:13 by moudrib           #+#    #+#             */
-/*   Updated: 2023/01/24 23:28:14 by moudrib          ###   ########.fr       */
+/*   Updated: 2023/01/26 16:02:50 by moudrib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+int	check_format(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (i < ft_strlen(str))
+	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+		{
+			ft_putstr("\x1B[31m❌INVALID PID");
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 void	sighandler(int sig)
 {
-	ft_putstr("message delivered successfully ✅");
+	(void)sig;
+	ft_putstr("\x1B[32mMESSAGE DELIVERED SUCCESSFULLY ✅");
 }
 
 void	tobinary(char c, int pid)
@@ -29,7 +47,7 @@ void	tobinary(char c, int pid)
 		else
 			kill(pid, SIGUSR2);
 		signal(SIGUSR2, sighandler);
-		usleep(300);
+		usleep(600);
 	}
 }
 
@@ -42,6 +60,8 @@ int	main(int ac, char **av)
 	if (ac == 3)
 	{
 		pid = ft_atoi(av[1]);
+		if (check_format(av[1]))
+			return (0);
 		while (av[2][i])
 		{
 			tobinary(av[2][i], pid);
@@ -49,5 +69,7 @@ int	main(int ac, char **av)
 		}
 		tobinary(0, pid);
 	}
+	else
+		ft_putstr("\x1B[31m❌INVALID FORMAT: TRY ./client + pid + \"string\"");
 	return (0);
 }

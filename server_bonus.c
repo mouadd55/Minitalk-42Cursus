@@ -6,7 +6,7 @@
 /*   By: moudrib <moudrib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:36:47 by moudrib           #+#    #+#             */
-/*   Updated: 2023/01/24 23:28:31 by moudrib          ###   ########.fr       */
+/*   Updated: 2023/01/26 19:35:13 by moudrib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(void)
 	pid = getpid();
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
-	ft_putstr("Process ID: ");
+	ft_putstr("\x1B[33mProcess ID:\x1B[0m"" ");
 	ft_putnbr(pid);
 	ft_putchar('\n');
 	while (1)

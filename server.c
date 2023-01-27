@@ -6,7 +6,7 @@
 /*   By: moudrib <moudrib@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:13:26 by moudrib           #+#    #+#             */
-/*   Updated: 2023/01/24 23:27:35 by moudrib          ###   ########.fr       */
+/*   Updated: 2023/01/26 21:33:14 by moudrib          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	usr_handler(int sig, siginfo_t *info, void *ptr)
 	i++;
 	if (i == 8)
 	{
-		if (c == 0)
-			kill(pid, SIGUSR2);
 		ft_putchar(c);
 		i = 0;
 		c = 0;
@@ -48,7 +46,7 @@ int	main(void)
 	pid = getpid();
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
-	ft_putstr("Process ID: ");
+	ft_putstr("\x1B[33mProcess ID:\x1B[0m"" ");
 	ft_putnbr(pid);
 	ft_putchar('\n');
 	while (1)
