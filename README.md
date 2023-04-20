@@ -29,3 +29,27 @@ For more detailed information, look at the [**subject of this project**](https:/
 >- Your server should be able to receive strings from several clients in a row without needing to restart.
 >- The communication between your client and your server has to be done only using UNIX signals.
 >- You can only use these two signals: SIGUSR1 and SIGUSR2.
+
+# Implementation
+
+## Allowed functions
+
+### 1 - Libft
+
+The subject states that [libft](https://github.com/mouadd55/Libft-42Cursus) library can be used!
+> You can definitely use your libft.
+Reading the subject it can be understood some functions included in the `libft` will be required to fulfill the requirements, as shown below:
+> The server must be started first. After its launch, it has to print its PID.
+> - The client takes two parameters:
+>     - The server PID.
+>     - The string to send.
+- `ft_atoi()`, to convert the PID argument received from command line to integer type for further processing of signal processing
+### 2 - Other functions
+
+Below is made a brief analysis of other functions that can be used.
+
+> In order to complete the mandatory part, you are allowed to use the following functions:
+> - write
+> - [ft_printf](https://github.com/mouadd55/ft_printf-42Cursus) and any equivalent YOU coded 
+> - signal
+
