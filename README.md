@@ -279,3 +279,6 @@ By launching it, this will show "Your message string" on the server window.
 `make fclean` - Deletes the executables and all the resulting object files  
 `make re` - fclean + all  
 `make bonus` - same as `all`, added for subject purposes  
+<br><br>
+![Minitalk](https://user-images.githubusercontent.com/49005437/233500428-04f7ed4d-486b-4838-bb24-305617bbd510.gif)
+
